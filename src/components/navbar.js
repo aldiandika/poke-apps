@@ -10,17 +10,17 @@ const Navbar = ({
   title
 }) => {
   return (
-    <Box sx={{
-      width: "92vw",
-      px: 2,
-      py: 2,
-      position: "fixed",
-      zIndex: 2000
-    }}>
+    <Box
+      width={{ xs: "95%", sm: "95%", md: "99%", lg: "99%" }}
+      sx={{
+        p: 1,
+        position: "fixed",
+        zIndex: 2000
+      }}>
       <AppBar
         sx={{
           backgroundColor: "#76C39F",
-          elevation: 2,
+          elevation: 12,
           position: "sticky"
         }}
       >
@@ -30,7 +30,7 @@ const Navbar = ({
             edge="start"
             color="inherit"
             aria-label="menu"
-            sx={{ mr: 2 }}
+            sx={{ mr: 1 }}
           >
             <MenuIcon />
           </IconButton>

@@ -1,0 +1,84 @@
+import { Box, Card } from "@mui/material";
+
+
+const PokeBasicInfo = ({
+  pokeWeight,
+  pokeHeight,
+  pokeBaseEXP,
+}) => {
+
+  return (
+    <>
+      <Box
+        sx={{
+          width: "90%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "flex-start",
+          fontWeight: "bold",
+          color: "#56525C"
+        }}
+      >
+        Basic Info
+      </Box>
+
+      <Card
+        sx={{
+          minWidth: "12sem",
+          minHeight: "3em",
+          marginTop: 1,
+          padding: 2,
+          boxShadow: 3,
+          borderRadius: "1em"
+        }}
+      >
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "space-between",
+            paddingY: 1
+          }}
+        >
+          <Box sx={{ flex: 1.5, fontWeight: 600, color: "#ACACAC" }}>Weight </Box>
+          <Box sx={{ flex: 3, fontWeight: 600, color: "#56525C" }}>{pokeWeight * 0.1} Kg</Box>
+        </Box>
+
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "space-between",
+            paddingY: 1
+          }}
+        >
+          <Box sx={{ flex: 1.5, fontWeight: 600, color: "#ACACAC" }}>Height </Box>
+          <Box sx={{ flex: 3, fontWeight: 600, color: "#56525C" }}>{Math.round(pokeHeight * 10) / 100} m</Box>
+        </Box>
+
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "space-between",
+            paddingY: 1
+          }}
+        >
+          <Box sx={{ flex: 1.5, fontWeight: 600, color: "#ACACAC" }}>Base EXP </Box>
+          <Box sx={{ flex: 3, fontWeight: 600, color: "#56525C" }}>{pokeBaseEXP}</Box>
+        </Box>
+
+      </Card>
+
+    </>
+  )
+}
+
+export default PokeBasicInfo;
