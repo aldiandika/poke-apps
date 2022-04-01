@@ -37,7 +37,10 @@ class PokemonListPage extends Component {
       }
     )
     let tempList = JSON.parse(localStorage.getItem("my_poke"));
-    this.setState({ owned: tempList.length })
+    if (tempList.length) {
+      this.setState({ owned: tempList.length })
+    }
+
   }
 
   render() {
