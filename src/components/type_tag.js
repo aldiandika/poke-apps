@@ -11,15 +11,15 @@ const TypeTag = ({
     <>
       <Box
         sx={{
-          width: "25%",
-          margin: 0.5
+          margin: 0.5,
+          padding: 1
         }}
       >
         <div
           css={css`
         width: auto;
         border-radius: 8em;
-        padding: 0.2em;
+        padding: 0.4em;
         background-color: ${color};
         `}
         >

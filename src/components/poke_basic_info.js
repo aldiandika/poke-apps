@@ -40,11 +40,11 @@ const PokeBasicInfo = ({
             flexDirection: "row",
             justifyContent: "center",
             alignItems: "space-between",
-            paddingY: 1
+            paddingY: 0.5
           }}
         >
           <Box sx={{ flex: 1.5, fontWeight: 600, color: "#ACACAC" }}>Weight </Box>
-          <Box sx={{ flex: 3, fontWeight: 600, color: "#56525C" }}>{pokeWeight * 0.1} Kg</Box>
+          <Box sx={{ flex: 3, fontWeight: 600, color: "#56525C" }}>{pokeWeight && Math.round(pokeWeight * 10) / 100} Kg</Box>
         </Box>
 
         <Box
@@ -54,11 +54,11 @@ const PokeBasicInfo = ({
             flexDirection: "row",
             justifyContent: "center",
             alignItems: "space-between",
-            paddingY: 1
+            paddingY: 0.5
           }}
         >
           <Box sx={{ flex: 1.5, fontWeight: 600, color: "#ACACAC" }}>Height </Box>
-          <Box sx={{ flex: 3, fontWeight: 600, color: "#56525C" }}>{Math.round(pokeHeight * 10) / 100} m</Box>
+          <Box sx={{ flex: 3, fontWeight: 600, color: "#56525C" }}>{pokeHeight && Math.round(pokeHeight * 10) / 100} m</Box>
         </Box>
 
         <Box
@@ -68,7 +68,7 @@ const PokeBasicInfo = ({
             flexDirection: "row",
             justifyContent: "center",
             alignItems: "space-between",
-            paddingY: 1
+            paddingY: 0.5
           }}
         >
           <Box sx={{ flex: 1.5, fontWeight: 600, color: "#ACACAC" }}>Base EXP </Box>

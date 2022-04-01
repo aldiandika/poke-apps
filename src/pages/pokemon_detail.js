@@ -1,13 +1,16 @@
-import { Box, Hidden } from "@mui/material";
+import { Box, Fab, Hidden, Drawer } from "@mui/material";
 import { useEffect, useState } from "react";
 import NameAndTypeComp from "../components/name_n_type_component";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import PokeTypeTag from "../components/poke_type_tag";
 import PokeballBG from "../assets/pokeball.webp";
+import PokeballIC from "../assets/pokeball-icon.webp";
+
 import PokeBasicInfo from "../components/poke_basic_info";
 import PokeMoveInfo from "../components/poke_moves_info";
 import PokeAbility from "../components/poke_ability_info";
+import CatchLayout from "../layouts/catch_layout";
 
 const PokemonDetailPage = () => {
   let param = useParams();
@@ -15,6 +18,16 @@ const PokemonDetailPage = () => {
 
   const [pokeData, setPokeData] = useState({});
   const [bgColor, setBgColor] = useState("greenyellow");
+
+  const [openDrawer, setOpenDrawer] = useState(false);
+
+  const handleDrawerOpen = () => {
+    setOpenDrawer(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpenDrawer(false);
+  };
 
   // Pokemon Data
   const [pokeType, setPokeType] = useState([]);
@@ -51,7 +64,7 @@ const PokemonDetailPage = () => {
       }
     }).then(
       res => {
-        console.log(res.data);
+        // console.log(res.data);
         let rawData = res.data
         if (res.status === 200) {
           setPokeData(rawData);
@@ -80,13 +93,12 @@ const PokemonDetailPage = () => {
           alignItems: "center"
         }}
       >
-        Name and Type
         <Hidden lgUp>
 
           {/* Name and Type Pokemon */}
           <Box
             sx={{
-              width: "100vw",
+              width: "100%",
               height: "50vh",
               flexDirection: "column",
               justifyContent: "center",
@@ -94,7 +106,8 @@ const PokemonDetailPage = () => {
               paddingTop: 4,
               px: 10,
               backgroundColor: bgColor,
-              position: "fixed"
+              position: "fixed",
+              overflow: "hidden"
             }}
           >
             <img
@@ -119,7 +132,7 @@ const PokemonDetailPage = () => {
                 flexDirection: "row",
                 justifyContent: "flex-start",
                 alignItems: "center",
-                paddingLeft: 0.4
+                paddingLeft: 2
               }}
             >
               {
@@ -149,9 +162,73 @@ const PokemonDetailPage = () => {
           />
         </Hidden>
         <Hidden lgDown>
-          Desktop
+          {/* Name and Type Pokemon */}
+          <Box
+            sx={{
+              width: "100vw",
+              height: "50vh",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              paddingTop: 4,
+              px: 10,
+              backgroundColor: bgColor,
+              position: "fixed"
+            }}
+          >
+            <img
+              src={PokeballBG}
+              alt="Background"
+              style={{
+                width: 500,
+                position: "absolute",
+                opacity: 0.3,
+                zIndex: 1,
+                top: -40,
+                right: 200
+              }}
+            />
+            <NameAndTypeComp
+              pokeName={pokeData.name}
+              poke_ID={pokeID}
+            />
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "flex-start",
+                alignItems: "center",
+                paddingLeft: 4
+              }}
+            >
+              {
+                pokeType.map((item, id) => (
+                  <PokeTypeTag
+                    key={id}
+                    pokeType={item.type.name}
+                  />
+                ))
+              }
+            </Box>
+
+
+          </Box>
+
+          {/* Image */}
+          <img
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokeID}.png`}
+            alt="Pokemon"
+            style={{
+              width: "30%",
+              position: "absolute",
+              top: "-10%",
+              left: "60%",
+              zIndex: 100,
+            }}
+          />
         </Hidden>
 
+        {/* Detail Desc */}
         <Box
           sx={{
             minWidth: "90vw",
@@ -168,8 +245,9 @@ const PokemonDetailPage = () => {
           }}
         >
           <Box
+            minWidth={{ xs: "85vw", sm: "85vw", md: "90%", lg: "90%" }}
             sx={{
-              minWidth: "85vw",
+
               height: "60vh",
               position: "absolute",
               zIndex: 15,
@@ -188,11 +266,9 @@ const PokemonDetailPage = () => {
                 pokeBaseEXP={pokeData.base_experience}
               />
               <br />
-              <br />
               <PokeAbility
                 pokeAbi={pokeData.abilities}
               />
-              <br />
               <br />
               <PokeMoveInfo
                 pokeID={pokeID}
@@ -205,9 +281,7 @@ const PokemonDetailPage = () => {
                 pokeBaseEXP="no-data"
               />
               <br />
-              <br />
               <PokeAbility />
-              <br />
               <br />
               <PokeMoveInfo
                 pokeID={pokeID}
@@ -217,10 +291,36 @@ const PokemonDetailPage = () => {
           </Box>
 
         </Box>
-
-
-
       </Box>
+
+      {/* Button Catch */}
+      <Fab
+        sx={{
+          position: "absolute",
+          top: "25vh",
+          right: 12,
+          backgroundColor: "white"
+        }}
+        onClick={handleDrawerOpen}
+      >
+        <img
+          alt="catch-poke"
+          src={PokeballIC}
+          width="90px"
+        />
+      </Fab>
+
+      {/* Drawer */}
+      <Drawer
+        anchor="bottom"
+        open={openDrawer}
+      >
+        <CatchLayout
+          pokeID={pokeID}
+          pokeName={pokeData.name}
+          handleDrawerClose={() => handleDrawerClose()}
+        />
+      </Drawer>
 
     </>
   )

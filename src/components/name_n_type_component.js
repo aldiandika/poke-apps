@@ -8,8 +8,8 @@ const NameAndTypeComp = ({
     <>
       <Box
         sx={{
-          width: "100%",
-          padding: 1
+          maxWidth: "100vw",
+          paddingLeft: 2
         }}
       >
         <Box

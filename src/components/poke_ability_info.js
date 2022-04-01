@@ -56,7 +56,7 @@ const PokeAbility = ({
                   display: "flex",
                   flexWrap: "wrap",
                   alignItems: "center",
-                  justifyContent: "space-between"
+                  justifyContent: "flex-start"
                 }}
               >
                 {pokeAbi.map((item, id) => (
@@ -69,7 +69,6 @@ const PokeAbility = ({
                   </>
                 ))}
               </Box>
-
 
             </Card>
           </>

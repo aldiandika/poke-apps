@@ -14,8 +14,6 @@ const Routing = () => {
           <Route path="/my-pokemon" element={<MyPokemonPage />} />
         </Route>
         <Route path="/detail/:id" element={<PokemonDetailPage />} />
-
-
       </Routes>
     </BrowserRouter >
   )
