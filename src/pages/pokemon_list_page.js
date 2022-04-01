@@ -8,7 +8,8 @@ class PokemonListPage extends Component {
     pokeData: [],
     count: 0,
     next: ``,
-    previous: null
+    previous: null,
+    owned: 0
   }
 
   componentDidMount() {
@@ -35,6 +36,8 @@ class PokemonListPage extends Component {
         console.log(err)
       }
     )
+    let tempList = JSON.parse(localStorage.getItem("my_poke"));
+    this.setState({ owned: tempList.length })
   }
 
   render() {
@@ -96,10 +99,38 @@ class PokemonListPage extends Component {
         sx={{
           width: "100%",
           minHeight: "100vh",
-          paddingTop: 10,
+          paddingTop: 6,
           backgroundColor: "ivory"
         }}
       >
+        <Box
+          sx={{
+            width: "90%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "flex-start",
+            fontWeight: "bold",
+            padding: 2,
+            color: "#56525C"
+          }}
+        >
+          Pokemon List.
+        </Box>
+        <Box
+          sx={{
+            width: "90%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "flex-start",
+            fontWeight: 400,
+            paddingLeft: 2,
+            color: "#56525C"
+          }}
+        >
+          Owned: {this.state.owned}
+        </Box>
         <Box
           sx={{
             maxWidth: "100vw",

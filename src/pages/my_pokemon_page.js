@@ -9,7 +9,7 @@ class MyPokemonPage extends Component {
 
   componentDidMount() {
     let tempList = JSON.parse(localStorage.getItem("my_poke"));
-    console.log(tempList);
+    // console.log(tempList);
     this.setState({
       pokeList: tempList
     })

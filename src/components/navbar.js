@@ -1,10 +1,10 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link } from "@mui/material";
 
 const Navbar = ({
   title
@@ -24,27 +24,41 @@ const Navbar = ({
           position: "sticky"
         }}
       >
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 1 }}
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "center",
+            justifyContent: "space-between",
+            alignItems: "center",
+            paddingLeft: 0.5
+          }}
+        >
+          <Link href="/" sx={{ textDecoration: "none" }}>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{
+                flexGrow: 1,
+                fontWeight: 600,
+                color: "white"
+              }}
+            >
+              Pokemon Apps
+            </Typography>
+          </Link>
+
+          <Box
+            sx={{ paddingLeft: 1 }}
           >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{
-              flexGrow: 1,
-              fontWeight: 600
-            }}
-          >
-            Pokemon Apps
-          </Typography>
-        </Toolbar>
+            <Link href="/my-pokemon">
+              <IconButton>
+                <MenuIcon sx={{ color: "white" }} />
+              </IconButton>
+            </Link>
+          </Box>
+        </Box>
+
       </AppBar>
     </Box>
   )
