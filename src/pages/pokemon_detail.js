@@ -1,16 +1,17 @@
-import { Box, Fab, Hidden, Drawer } from "@mui/material";
+import { Box, Fab, Hidden, Drawer, IconButton, Link } from "@mui/material";
 import { useEffect, useState } from "react";
-import NameAndTypeComp from "../components/name_n_type_component";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import PokeTypeTag from "../components/poke_type_tag";
 import PokeballBG from "../assets/pokeball.webp";
 import PokeballIC from "../assets/pokeball-icon.webp";
 
+import NameAndTypeComp from "../components/name_n_type_component";
 import PokeBasicInfo from "../components/poke_basic_info";
 import PokeMoveInfo from "../components/poke_moves_info";
 import PokeAbility from "../components/poke_ability_info";
 import CatchLayout from "../layouts/catch_layout";
+import HomeIcon from "@mui/icons-material/Home";
 
 const PokemonDetailPage = () => {
   let param = useParams();
@@ -31,7 +32,6 @@ const PokemonDetailPage = () => {
 
   // Pokemon Data
   const [pokeType, setPokeType] = useState([]);
-  // const [pokeMove, setPokeMove] = useState([]);
 
   const defineBgColor = (type) => {
     if ((type) === "grass") { setBgColor("#64D0B0") }
@@ -93,6 +93,7 @@ const PokemonDetailPage = () => {
           alignItems: "center"
         }}
       >
+
         <Hidden lgUp>
 
           {/* Name and Type Pokemon */}
@@ -103,13 +104,21 @@ const PokemonDetailPage = () => {
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              paddingTop: 4,
               px: 10,
               backgroundColor: bgColor,
               position: "fixed",
               overflow: "hidden"
             }}
           >
+            <Box
+              sx={{ paddingLeft: 1 }}
+            >
+              <Link href="/">
+                <IconButton>
+                  <HomeIcon />
+                </IconButton>
+              </Link>
+            </Box>
             <img
               src={PokeballBG}
               alt="Background"
@@ -155,7 +164,7 @@ const PokemonDetailPage = () => {
             style={{
               width: "60%",
               position: "absolute",
-              top: "15%",
+              top: "12%",
               left: "20%",
               zIndex: 100,
             }}
@@ -176,6 +185,15 @@ const PokemonDetailPage = () => {
               position: "fixed"
             }}
           >
+            <Box
+              sx={{ paddingLeft: 1 }}
+            >
+              <Link href="/">
+                <IconButton>
+                  <HomeIcon />
+                </IconButton>
+              </Link>
+            </Box>
             <img
               src={PokeballBG}
               alt="Background"
@@ -227,7 +245,6 @@ const PokemonDetailPage = () => {
             }}
           />
         </Hidden>
-
         {/* Detail Desc */}
         <Box
           sx={{

@@ -66,7 +66,7 @@ const CatchLayout = ({
         });
 
         tempList.push(pokeInfo);
-        console.log(tempList);
+        // console.log(tempList);
         localStorage.setItem("my_poke", JSON.stringify(tempList));
 
         setTimeout(() => {
