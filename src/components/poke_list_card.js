@@ -133,7 +133,7 @@ const PokeListCard = ({
                   width: 200,
                   position: "absolute",
                   top: -40,
-                  left: 150,
+                  left: 70,
                   zIndex: 100,
                 }}
               />
